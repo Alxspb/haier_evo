@@ -19,10 +19,10 @@ from enum import Enum
 
 
 SST_CLOUD_API_URL = "https://api.sst-cloud.com/"
-API_PATH = "https://evo.haieronline.ru/v2"
-API_LOGIN = "users/auth/sign-in"
-API_TOKEN_REFRESH = "users/auth/refresh"
-API_DEVICES = "ru/pages/sduiRawPaginated/smartHome/spaces/house?part=1&partitionWeight=6"
+API_PATH = "https://evo.haieronline.ru/"
+API_LOGIN = "v2/users/auth/sign-in"
+API_TOKEN_REFRESH = "v2/users/auth/refresh"
+API_DEVICES = "v2/ru/pages/sduiRawPaginated/smartHome/spaces/house?part=1&partitionWeight=6"
 API_STATUS = "https://iot-platform.evo.haieronline.ru/mobile-backend-service/api/v1/config/{mac}?type=DETAILED"
 
 API_WS_PATH = "wss://iot-platform.evo.haieronline.ru/gateway-ws-service/ws/"
