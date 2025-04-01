@@ -19,10 +19,10 @@ from enum import Enum
 
 
 SST_CLOUD_API_URL = "https://api.sst-cloud.com/"
-API_PATH = "https://evo.haieronline.ru"
-API_LOGIN = "v1/users/auth/sign-in"
-API_TOKEN_REFRESH = "v1/users/auth/refresh"
-API_DEVICES = "v2/ru/pages/sduiRawPaginated/smartHome?part=1&partitionWeight=6"
+API_PATH = "https://evo.haieronline.ru/v2"
+API_LOGIN = "users/auth/sign-in"
+API_TOKEN_REFRESH = "users/auth/refresh"
+API_DEVICES = "ru/pages/sduiRawPaginated/smartHome/spaces/house?part=1&partitionWeight=6"
 API_STATUS = "https://iot-platform.evo.haieronline.ru/mobile-backend-service/api/v1/config/{mac}?type=DETAILED"
 
 API_WS_PATH = "wss://iot-platform.evo.haieronline.ru/gateway-ws-service/ws/"
@@ -49,7 +49,8 @@ class Haier:
             login_path = urljoin(API_PATH, API_LOGIN)
             _LOGGER.debug(f"Logging in to {login_path} with email {self._email}")
 
-            resp = requests.post(login_path, data={'email': self._email, 'password': self._password})
+            resp = requests.post(login_path, data={'email': self._email, 'password': self._password,
+                                                   'type': "ru.haier.evo.shared.domain.auth.repository.api.requests.SignInUserRequest.SignInViaEmailRequest"})
             _LOGGER.debug(f"Login ({self._email}) status code: {resp.status_code}")
         else: # token refresh
             refresh_path = urljoin(API_PATH, API_TOKEN_REFRESH)
